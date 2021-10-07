@@ -53,7 +53,7 @@ export default {
      * Api url
      * @prop {string>} api 
      */
-    api: '../api/FishEyeData.json',
+    api: './api/FishEyeData.json',
 
     /**
      * Templates
