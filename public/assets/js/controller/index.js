@@ -68,15 +68,15 @@ export default {
      * Mount controller
      * @return {void}
      */
-    async mount () {
+    async mount () {console.log(window.location.host);
         const queryString = window.location.search
         const urlParams = new URLSearchParams(queryString);
         const tag = urlParams.get('tag');
-        console.log(tag);
         if (tag) this.stateTags.push(tag);
         this.photographers = await this.fetchPhotographers();
         this.applyFilter();
         this.render();
+        
     },
 
     /**
