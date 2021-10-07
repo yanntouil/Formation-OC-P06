@@ -1,0 +1,40 @@
+/**
+ * Project FishEye
+ * Component tag
+ */
+
+
+
+
+
+.tag {
+    display: inline-block;
+    padding: 0.1875rem 0.4375rem;
+    border-radius: 0.6875rem;
+    height: 1.375rem;
+    border: 1px solid $gray-light;
+    outline: none;
+    color: $primary;
+    font-weight: $font-medium;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    animation: animate-pop-left 1s ease-in-out;
+    &:before {
+        content: '#';               
+    }
+    &:hover, &:focus, &[data-filter-active="true"] {
+        background: $primary;
+        color: $white;
+    }
+}
+
+/**
+ * Animations
+ */
+
+ @keyframes animate-pop {// Popping up
+    from { opacity: 0;}
+    to { opacity: 1;}
+}

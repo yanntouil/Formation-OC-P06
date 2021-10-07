@@ -1,0 +1,89 @@
+/**
+ * Project FishEye
+ * Component modal
+ */
+
+
+
+
+.modal {
+    position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba($gray-light, .4);
+    overflow-y: auto;
+    &:not([aria-hidden="true"]) {
+        animation: animate-backdrop-in .5s ease-in-out;
+        & .modal-wrapper {
+            animation: animate-modal-in .5s ease-in-out;
+        }
+    }
+    &-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 41.875rem;
+        margin: 4.3125rem auto;
+        padding: 0.9375rem 2.1875rem 2.375rem;
+        border-radius: 0.3125rem;
+        background-color: $primary-xlight; 
+    }
+    &-close {
+        position: absolute; top: 2.1875rem; right: 2.1875rem;
+        overflow: hidden;// Remove viewbox padding
+        display: flex; justify-content: center; align-items: center;
+        width: 2.625rem; height: 2.625rem;
+        svg {
+            margin: -1.625rem;// Remove viewbox padding
+            width: 4.25rem; height: 4.25rem;
+            fill: $white;
+        }
+    }
+    &-title {
+        display: flex; flex-wrap: wrap;
+        font-size: 4rem;
+        &-name {
+            width: 100%;
+        }
+    }
+}
+.form-group {
+    display: flex; flex-direction: column; align-items: stretch;
+    padding-top: 0.625rem; 
+    &-label {
+        color: $form-label-color;
+        font-size: 2.25rem;
+    }
+    &-input, &-textarea {
+        border-radius: 0.3125rem;
+        border: 0px;
+        background-color: $white;
+    }
+    &-input {
+        height: $form-input-height;
+    }
+    &-textarea {
+        height: 10.625rem;
+    }
+    &[data-error-show] &-input, &[data-error-visible] &-textarea {
+        border: 2px solid #FF4E60;
+    }
+}
+.form-submit {
+    padding-top: 1.625rem;
+    &-button {
+        height: 4.3125rem;
+        padding: 0.25rem 3.125rem;
+        border-radius: 0.3125rem;
+        background-color: $primary;
+        color: $white; 
+        font-weight: $font-bold;
+        cursor: pointer;
+    }
+}
+
+@keyframes animate-backdrop-in {
+    0% { background-color: rgba($gray-light, 0); }
+    100% { background-color: rgba($gray-light, .4); }
+}
+@keyframes animate-modal-in {
+    0% { transform: translateY(2rem) scale(.8); }
+    100% { transform: translateY(0) scale(1); }
+}

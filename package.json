@@ -1,0 +1,23 @@
+{
+  "name": "yanntouil_6_29092021",
+  "version": "1.0.0",
+  "description": "OpenClassrooms FishEye project",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.32.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanntouil/yanntouil_6_29092021.git"
+  },
+  "author": "Yann Touil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yanntouil/yanntouil_6_29092021/issues"
+  },
+  "homepage": "https://github.com/yanntouil/yanntouil_6_29092021#readme"
+}

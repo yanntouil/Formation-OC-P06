@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>Document</title>
+</head>
+<body class="photographer-page">
+    <header class="header">
+        <a href="index.html" class="header-logo">
+            <img src="assets/images/logo.png" alt="Fisheye Home page">
+        </a>
+     </header>
+    <main class="main">
+        <section id="photographer"></section>
+        <aside class="filter">
+            <span class="filter-label" id="filter-label">Trier par</span>
+            <div class="filter-wrapper" id="filter" tabindex="0">
+                <label class="filter-label" role="label" aria-labelledby="filter-label">Popularité</label> 
+                <ul class="filter-listbox" role="listbox"  aria-labelledby="filter-label" style="display: none;"> 
+                    <li class="filter-listbox-option" role="option" id="filter-rate" aria-selected="true" data-listbox-value="rate" data-listbox-name="Popularité">Popularité</li> 
+                    <li class="filter-listbox-option" role="option" id="filter-date" data-listbox-value="date" data-listbox-name="Date">Date</li> 
+                    <li class="filter-listbox-option" role="option" id="filter-title" data-listbox-value="title" data-listbox-name="Titre">Titre</li> 
+                </ul>
+            </div>
+        </aside>
+        <section class="media" id="media"></section>
+    </main>
+    <aside class="modal" id="modal-contact" role="dialog" aria-labelledby="modal-contact-title" aria-hidden="true" style="display: none;">
+        <div class="modal-wrapper">
+            <a href="#close-modal-contact" class="modal-close" aria-label="Close modal" data-modal-close>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"/></svg>
+            </a>
+            <h2 class="modal-title" id="modal-contact-title">Contactez-moi <span class="modal-title-name" data-modal-name></span></h2>
+            <form name="contact">
+                <div class="form-group" data-error="Le nom doit contenir au minimum 2 caractères">
+                    <label class="form-group-label" for="firstname">Prénom</label>
+                    <input class="form-group-input" type="text" name="firstname" id="firstname" minlength="2" title="Le prénom doit contenir au minimum 2 caractères" required>
+                </div>
+                <div class="form-group" data-error="Le nom doit contenir au minimum 2 caractères">
+                    <label class="form-group-label" for="lastname">Nom</label>
+                    <input class="form-group-input" type="text" name="lastname" id="lastname" minlength="2" title="Le nom doit contenir au minimum 2 caractères" required>
+                </div>
+                <div class="form-group" data-error="L'adresse e-mail doit être valide">
+                    <label class="form-group-label" for="email">Email</label>
+                    <input class="form-group-input" type="email" name="email" id="email" title="L'adresse e-mail doit être valide" required>
+                </div>
+                <div class="form-group" data-error="Le message doit contenir au minimum 5 caractères">
+                    <label class="form-group-label" for="message">Votre message</label> 
+                    <textarea class="form-group-textarea" type="text" name="message" id="message" minlength="5" title="Le message doit contenir au minimum 5 caractères" required></textarea>
+                </div>
+                <div class="form-submit">
+                    <input type="submit" value="Envoyer" class="form-submit-button">
+                </div>
+            </form>
+        </div>
+    </aside>
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
