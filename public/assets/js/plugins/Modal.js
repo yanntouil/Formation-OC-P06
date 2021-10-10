@@ -31,9 +31,9 @@ export default class Modal {
      * @returns {void}
      */
     init () {
+        this.modal.setAttribute('aria-modal', 'true');
         // Listener
         this.modal.addEventListener("click", this.closeModal.bind(this));// Click on backdrop
-        console.log();
         Array.from(this.modal.children).forEach(// Stop propagation on backdrop
             (el) => el.addEventListener("click", (e) => e.stopPropagation())
         );
@@ -49,21 +49,20 @@ export default class Modal {
 
     /**
      * Open a modal
-     * @param {PointerEvent} e
+     * @param {KeyboardEvent|PointerEvent} e
      * @returns {void}
      */
     openModal (e) {
-        if(e.key && e.key != 'Enter') return;// Click or Enter
+        if(e instanceof KeyboardEvent && e.key && e.key != 'Enter') return;// Click or Enter
         e.preventDefault();
         this.state = true;
         this.modal.removeAttribute('aria-hidden');
-        this.modal.setAttribute('aria-modal', 'true');
         this.modal.style.display = '';
         if (this.options.lockBodyScroll) lockBodyScroll();
         if (this.options.keyboardInteraction) {
             this.previousFocus = document.activeElement
             this.focusables[0].focus()
-            this.manageKeyboardListener = this.manageKeyboard.bind(this)
+            this.manageKeyboardListener = this.manageKeyboard.bind(this);
             window.addEventListener('keydown', this.manageKeyboardListener);
         }
     };
@@ -78,7 +77,6 @@ export default class Modal {
         e.preventDefault();
         this.state = false;
         this.modal.removeAttribute('aria-modal');
-        this.modal.setAttribute('aria-hidden', 'true');
         this.modal.style.display = 'none';
         if (this.options.lockBodyScroll) unlockBodyScroll();
         if (this.options.keyboardInteraction) {
@@ -94,7 +92,7 @@ export default class Modal {
      */
     manageKeyboard (e) {
         if (!['Escape', 'Esc', 'Tab'].includes(e.key)) return;
-        if (e.key == 'Escape' || e.key == 'Esc') return this.closeModal (e);// Escape to close
+        if (e.key == 'Escape' || e.key == 'Esc') return this.closeModal(e);// Escape to close
         e.preventDefault();
         const elFocus =  this.modal.querySelector(':focus');// Get current focus
         let index = this.focusables.findIndex((el) => el === elFocus);// Get current index

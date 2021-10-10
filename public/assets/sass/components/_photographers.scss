@@ -8,63 +8,64 @@
 
 
 .photographers {
-     display: flex; flex-wrap: wrap; justify-content: space-around;
-     margin: 3.625rem (($header-padding-x + 3.5rem) * -1);
-     gap: 2rem 0;
-     .photographer {
-         flex-shrink: 0;
-         display: flex; flex-direction: column; align-items: center;
-         width: 30%;
-         animation: animate-photographer 1s ease-in-out;
-         &-link {
-             display: flex; flex-direction: column; align-items: center;
-             outline: none;
-             &:hover .photographer-picture, &:focus .photographer-picture {
-                 transform: scale(1.1);
-             }
-         }
-         &-picture {
-             position: relative;
-             width: $photographer-picture-size; height: $photographer-picture-size;
-             margin-bottom: 0.5rem;
-             border-radius: 50%;
-             transition: transform 0.2s ease-in-out;
-             img {
-                 width: $photographer-picture-size; height: $photographer-picture-size;
-                 border-radius: 50%;
-                 object-fit: cover;
-             }
-             &:before {
-                 position: absolute; top: -0.25rem; right: -0.25rem; bottom: -0.25rem; left: -0.25rem;
-                 display: block;
-                 content: '';
-                 border-radius: 50%;
-                 border: 1rem solid rgba($white, 0.98);
-             }
-         }
-         &-name {
-             color: $primary-light;
-             font-size: $font-size-title;
-         }
-         &-location {
-             color: $primary;
-             font-size: 0.8125rem;
-         }
-         &-tagline {
-             padding-bottom: 4px;
-             font-size: 0.625rem;
-         }
-         &-price {
-             padding-bottom: 4px;
-             color: $gray-dark;
-             font-size: 0.5625rem;
-         }
-         &-tags {
-             display: flex;
-             gap: 0.3125rem;
-         }
-     }
- }
+    display: flex; flex-wrap: wrap; justify-content: space-around;
+    margin: var(--photographers-mt) var(--photographers-mx) 3.625rem;
+    gap: 2rem;
+.photographer {
+        flex-shrink: 0;
+        display: flex; flex-direction: column; align-items: center;
+        width: var(--photographer-w);
+        animation: animate-photographer 1s ease-in-out;
+        &-link {
+            display: flex; flex-direction: column; align-items: center;
+            outline: none;
+            &:hover .photographer-picture, &:focus .photographer-picture {
+                transform: scale(1.1);
+            }
+        }
+        &-picture {
+            position: relative;
+            width: $photographer-picture-size; height: $photographer-picture-size;
+            margin-bottom: 0.5rem;
+            border-radius: 50%;
+            transition: transform 0.2s ease-in-out;
+            img {
+                width: $photographer-picture-size; height: $photographer-picture-size;
+                border-radius: 50%;
+                object-fit: cover;
+            }
+            &:before {// Shadow effect
+                position: absolute; top: -0.25rem; right: -0.25rem; bottom: -0.25rem; left: -0.25rem;
+                display: block;
+                content: '';
+                border-radius: 50%;
+                border: 1rem solid rgba($white, 0.98);
+            }
+        }
+        &-name {
+            text-align: center;
+            color: $primary-light;
+            font-size: $font-size-title;
+        }
+        &-location {
+            color: $primary;
+            font-size: 0.8125rem;
+        }
+        &-tagline {
+            padding-bottom: 4px;
+            font-size: 0.625rem;
+        }
+        &-price {
+            padding-bottom: 4px;
+            color: $gray-dark;
+            font-size: 0.5625rem;
+        }
+        &-tags {
+            display: flex; flex-wrap: wrap;
+            gap: var(--tags-gap);
+        }
+    }
+}
  
  
 /**

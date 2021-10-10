@@ -1,13 +1,13 @@
 /**
  * Class media
+ * @class
  */
 
 
 
 
 
-
- export default class Media {
+export default class Media {
     constructor(data) {
         this.id = data.id;
         this.photographer = {id: data.photographerId};

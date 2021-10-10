@@ -85,6 +85,7 @@ export default {
         const id = urlParams.get('id');
         await this.fetchData(id);
         if (!this.photographer) return window.location.replace("index.html");// Redirect to homepage (or 404 page)
+        document.title = 'FishEye ' + this.photographer.firstname;
         this.stateId = id;
         this.applyFilter();
         this.render();
@@ -119,17 +120,20 @@ export default {
         const template = Templates.getPhotographerHeader(this.photographer);
         this.dom.photographer.innerHTML = template;
         this.dom.photographer.querySelectorAll('[data-filter]').forEach(// Bind tag
-            (el) => el.addEventListener('click', 
-                (e) => window.location.replace("index.html?tag=" + el.dataset.filter)
-            )
+            (el) => {
+                el.addEventListener('click', (e) => window.location.replace("index.html?tag=" + el.dataset.filter));
+                el.addEventListener('keydown', (e) => {
+                    if (e.key == 'Enter') window.location.replace("index.html?tag=" + el.dataset.filter);
+                });
+            }
         );
         // Likes
         this.updateLikes();
         // Modal
         this.modal = new Modal(this.dom.modal, {});
-        const buttonContact = this.dom.photographer.querySelector('[href="#modal-contact"]');
+        const buttonContact = this.dom.photographer.querySelector('[data-modal-open="modal-contact"]');
         this.modal.bindOpen(buttonContact);
-        this.dom.modal.querySelector('[data-modal-name]').innerText = this.photographer.firstname;
+        this.dom.modal.querySelector('[data-modal-name]').innerText = this.photographer.name;
         this.dom.contact.addEventListener('submit', this.submitContact.bind(this));
     },
 
@@ -149,6 +153,9 @@ export default {
             (el) => {
                 el.setAttribute('tabindex', 0);
                 el.addEventListener('click', (e) => this.toggleLike(el));
+                el.addEventListener('keydown', (e) => {
+                    if (e.key == 'Enter') this.toggleLike(el);
+                });
             }
         );
     },
@@ -208,7 +215,7 @@ export default {
      */
     updateLikes () {
         let likes = 0;
-        this.photographer.media.forEach((media) => likes += media.likes)
+        this.photographer.media.forEach((media) => likes += media.likes);
         this.dom.photographer.querySelector('[data-likes-count]').innerText = likes;
     },
 
@@ -233,7 +240,7 @@ export default {
         console.log('%cNom: ' + form.lastname.value, 'color: '+ color +';');
         console.log('%cEmail: ' + form.email.value, 'color: '+ color +';');
         console.log('%cMessage: ' + form.message.value, 'color: '+ color +';');
-        this.dom.modal.click();
+        if (validContact) this.dom.modal.click();
     },
 
     /**
@@ -296,7 +303,7 @@ export default {
     applyFilter () {
         let filtered = this.photographer.media;
         filtered = this.applyOrderByTitle(filtered);
-        if (this.stateOrder == 'likes') filtered = this.applyOrderByLikes(filtered);
+        if (this.stateOrder == 'rate') filtered = this.applyOrderByLikes(filtered);
         else if (this.stateOrder == 'date') filtered = this.applyOrderByDate(filtered);
         return this.filtredMedia = filtered;
     },

@@ -6,11 +6,13 @@
 
 
 
-
 .media {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem 5.9375rem;
+    display: grid; grid-template-columns: var(--media-grid);
+    gap: var(--media-gap);
     margin-bottom: 2rem;
+    @include media-max('md') {
+        padding: 2.875rem 0;
+    }
     .card {
         display: flex; flex-direction: column;
         animation: animate-media .5s ease-in-out;
@@ -18,12 +20,12 @@
             position: relative;
             display: flex; justify-content: center; align-items: center;
             width: 100%;
-            aspect-ratio: 35 / 30;
+            aspect-ratio: var(--media-picture-ratio);
             img, video{
                 width: 100%;
-                border-radius: 0.3125rem;
+                border-radius: var(--border-radius);
                 object-fit: cover;
-                aspect-ratio: 35 / 30;
+                aspect-ratio: var(--media-picture-ratio);
                 cursor: pointer;
             }
             .video-icon {
@@ -31,22 +33,26 @@
                 width: 6rem;
                 color: rgba($white, 0.8);
                 fill: currentColor;
+                @include media-max('md') {
+                    width: 3rem;
+                }
             }
         }
         &-header {
-            display: flex; align-items: center;
+            display: flex; align-items: flex-start;
             margin-top: 0.625rem;
             color: $primary;
-            font-size: 1.5rem;
+            font-size: var(--media-fz);
             &-title {
                 flex-grow: 1;
             }
             &-like {
+                flex-shrink: 0;
                 display: flex; align-items: center;
                 gap: 0.375rem;
                 cursor: pointer;
                 svg {
-                    width: 1.125rem;
+                    width: var(--media-icon-s);
                     fill: currentColor;
                 }
             }

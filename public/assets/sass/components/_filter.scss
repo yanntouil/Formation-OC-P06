@@ -9,27 +9,29 @@
 
 .filter {
     display: flex; align-items: center;
-    //height: calc(4.3125rem + 0.625rem * 2);
     padding: 0.625rem 0;
     gap: 0.75rem;
     font-weight: $font-bold;
+    @include media-max('md') {
+        display: none;
+    }
     &-wrapper {
-        position: relative; z-index: 1;
+        position: relative; z-index: 2;
         display: flex; flex-direction: column; align-items: center;
         outline: none;
         color: $white;
         font-weight: $font-bold;
         [role="label"] {
             display: flex; justify-content: space-between; align-items: center;
-            width: 10.625rem; height: 4.3125rem;
+            width: 10.625rem; height: var(--listbox-label-h);
             padding: 0.25rem 1rem;
             gap: 1.625rem;
-            border-radius: 0.3125rem;
+            border-radius: var(--border-radius);
             background-color: $primary;
             font-weight: $font-bold;
             cursor: pointer;
             &:after {// carret
-                position: relative; z-index: 4;
+                position: relative; z-index: 5;
                 display: block;
                 width: 1rem; height: 1.4rem;
                 content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 320 512"><path d="M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z"/></svg>');
@@ -42,29 +44,26 @@
         &:hover [role="label"], &:focus [role="label"] {
             background-color: $primary-light;
             color: $black;
-            /*&:after {
-                content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 320 512"><path d="M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z"/></svg>');
-            }*/
         }
     }
     & [role="listbox"] {
-        position: absolute; top: 0; left: 0; z-index: 2;
+        position: absolute; top: 0; left: 0; z-index: 3;
         width: 100%;
-        padding: 0.5625rem 0;
-        border-radius: 0.3125rem;
+        padding: var(--listbox-py) 0;
+        border-radius: var(--border-radius);
         background-color: $primary;
         box-shadow: 1px 3px 8px 0px rgba(0,0,0,0.2);
         & [role="option"] {
-            position: relative; z-index: 3;
+            position: relative; z-index: 4;
             display: flex; align-items: center;
-            height: 3.1875rem;
-            padding: 0 1.125rem;
+            height: var(--listbox-option-h);
+            padding: 0 var(--button-px);
             transition: all .2s linear;
             text-align: left;
             cursor: pointer;
             outline: none;
             & + [role="option"]:before {// Underline
-                position: absolute; top: 0; right: 5%; left: 5%; z-index: 4;
+                position: absolute; top: 0; right: 5%; left: 5%; z-index: 5;
                 display: block;
                 content: '';
                 border-top: 1px solid $white;

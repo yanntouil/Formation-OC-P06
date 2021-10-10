@@ -36,6 +36,10 @@ export default class Listbox {
             list: this.listbox.querySelector('[role="listbox"]'),
             options: Array.from(this.listbox.querySelectorAll('[role="option"]')),
         }
+        // Label
+        const id = this.listbox.getAttribute('id');
+        const label = document.querySelector('label[for="' + id + '"]');
+        if (label) label.addEventListener('click', (e) => this.listbox.focus());
         // Listener
         this.listbox.addEventListener('click', this.openListbox.bind(this));
         const ids = [];// ids array for aria-owns
@@ -53,6 +57,7 @@ export default class Listbox {
         if (this.options.keyboardInteraction) this.listbox.addEventListener('keydown', this.manageKeyboard.bind(this));
         this.listbox.addEventListener('focusout', (e) => this.closeListbox());
         // Aria
+        this.listbox.setAttribute('aria-haspopup', 'listbox');
         this.listbox.setAttribute('aria-expanded', 'false');
         this.listbox.setAttribute('aria-owns', ids.join(' '));
         this.dom.list.style.display = 'none';
@@ -73,7 +78,7 @@ export default class Listbox {
      * Close listbox
      * @returns {void}
      */
-    closeListbox () {console.log('closeListbox');
+    closeListbox () {
         this.state = false;
         this.listbox.setAttribute('aria-expanded', 'false');
         this.dom.list.style.display = 'none';
@@ -85,7 +90,7 @@ export default class Listbox {
      * @param {HTMLElement} option
      * @returns {void}
      */
-    changeOption (option) {console.log('change');
+    changeOption (option) {
         this.currentOption.removeAttribute('aria-selected');
         option.setAttribute('aria-selected', 'true');
         this.setCurrentOption(option);

@@ -68,7 +68,7 @@ export default {
      * Mount controller
      * @return {void}
      */
-    async mount () {console.log(window.location.host);
+    async mount () {
         const queryString = window.location.search
         const urlParams = new URLSearchParams(queryString);
         const tag = urlParams.get('tag');

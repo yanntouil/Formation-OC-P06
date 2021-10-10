@@ -24,36 +24,136 @@ body {
 /**
  * Header
  */
+:root {
+    --header-px: 6.25rem;
+    --header-py: 2.625rem;
+    --header-gap: 5.375rem;
+    --header-direction: row;
+    --logo-w: 9.373rem;
+    --logo-h: 3.125rem;
 
-.header {
-    display: flex; align-items: center;
-    gap: $header-gap;
-    width: 100%;
-    max-width: $container-xl;
-    margin: 0 auto;
-    padding: $header-padding-y $header-padding-x;
-    @include media-max('lg') {
-        flex-wrap: wrap;
-        gap: 0;
-    }
+    --title-w: calc(19rem + var(--header-gap));
+    --title-right: calc((100vw - var(--container)) * 0.5);
+    --title-fz: 2.25rem;
+    --container: 90rem;
+    --tag-gap: 0.3125rem;
+    --photographer-w: 30%;
+    --photographers-mx: calc((var(--header-px) + 3.5rem) * -1);
+    --photographers-mt: 3.625rem;
+    --border-radius: 0.3125rem;
+    --tags-gap: 0.3125rem;
+
+    --button-h: 4.3125rem;
+    --button-px: 1.125rem;
+
+    --photographer-min-h: 20rem;
+    --photographer-bgc: #FAFAFA;
+    --photographer-px: 3.125rem;
+    --photographer-py: 3.5rem;
+    --photographer-title-fz: 4rem;
+    --photographer-location-fz: 1.5rem;
+    --photographer-tagline-fz: 1.125rem;
+    --photographer-body-pb: 1.1875rem;
+    --photographer-tag-fz: 1.125rem;
+    --photographer-picture-s: 13rem;
+    --photographer-picture-blur: rgba(250, 250, 250, 0.95);
+
+    --modal-my: 4.3125rem;
+    --modal-p: 0.9375rem 2.1875rem 2.375rem;
+    --modal-title-fz: 4rem;
+    --form-input-h: 4.25rem;
+    --form-textarea-h: 10.625rem;
+    --form-label-fz: 2.25rem;
+
+    --listbox-py: 0.5625rem;
+    --listbox-option-h: 3.1875rem;
+    --listbox-label-h: 4.3125rem;
+    --media-icon-s: 1.125rem;
+
+    --media-gap: 1.5rem 5.9375rem;
+    --media-grid: repeat(3, 1fr);
+    --media-picture-ratio: 7 / 6;
+    --media-fz: 1.5rem;
     
+    @include media-max('xl') {
+        --header-px: 3rem;
+        --header-direction: column;
+        --header-gap: 1.5rem;
+        --title-w: 0;
+        --title-right: 0;
+
+        --photographers-mx: 0;
+        --photographers-mt: 0;
+
+        --media-gap: 1.5rem 3rem;
+    }
+
+    @include media-max('lg') {
+        --header-px: 1.25rem;
+        --container: 100%;
+        --photographer-w: 45%;
+        --media-gap: 1.25rem;
+        --media-fz: 0.875rem;
+        --media-icon-s: 0.875rem;
+        --button-h: 2.1875rem;
+    }
+
+    @include media-max('md') {
+        --media-grid: repeat(2, 1fr);
+        --header-py: 1.875rem;
+        --logo-w: 9rem;
+        --logo-h: 3rem;
+        --title-fz: 0.875rem;
+        
+        --photographer-w: 100%;
+
+        --photographer-min-h: 7.5rem;
+        --photographer-bgc: initial;
+        --photographer-px: 0;
+        --photographer-py: 0;
+        --photographer-title-fz: 2.25rem;
+        --photographer-location-fz: 0.8125rem;
+        --photographer-tagline-fz: 0.8125rem;
+        --photographer-body-pb: 0.25rem;
+        --photographer-tag-fz: 0.8125rem;
+        --photographer-picture-s: 7.5rem;
+        --photographer-picture-blur: rgba(255, 255, 255, 0.95);
+
+        --modal-my: 0;
+        --modal-p: 1.25rem 1.125rem;
+        --modal-title-fz: 2.25rem;
+        --form-input-h: 3.25rem;
+        --form-textarea-h: 11.5rem;
+        --form-label-fz: 1.5rem;
+    }
+
+    @include media-max('sm') {
+        --media-grid: 1fr;
+        --media-picture-ratio: 16 / 9;
+    }
+
+}
+.header {
+    display: flex; flex-direction: var(--header-direction); align-items: center;
+    gap: var(--header-gap);
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--header-py) var(--header-px);
     &-logo {
-        @include media-max('lg') {
-            width: 100%;
-        }
-        img {
-            width: $logo-width; height: $logo-height;
+        @include media-max('xl') { width: 100%; }
+        svg {// ratio 3/1
+            width: var(--logo-w); height: var(--logo-h);
         }
     }
     &-nav {
-        @include media-min('lg') {
-            padding-right: 20rem;
-        }
-
-        
+        flex-grow: 1;
+        display: flex;
+        margin-right: var(--title-w);
         &-list {
-            display: flex; flex-wrap: wrap;
-            gap: 0.3125rem;
+            display: flex; flex-wrap: wrap; justify-content: center;
+            width: 100%;
+            gap: var(--tag-gap);
         }
         .tag {
             text-transform: capitalize;
@@ -67,25 +167,24 @@ body {
  * Main
  */
 .main {
-    position: relative;
     display: flex; flex-direction: column;
     width: 100%;
-    max-width: $container-xl;
+    max-width: var(--container);
     margin: 0 auto;
-    padding: 0 $header-padding-x;
+    padding: 0 var(--header-px);
     &-title {
-        position: absolute; top: -($header-padding-y * 2 + $logo-height); right: 0;
+        position: absolute; top: var(--header-py); right: var(--title-right);
         display: flex; align-items: center;
-        height: $header-padding-y * 2 + $logo-height;
-        padding: 0 $header-padding-x 0 $header-gap;
+        height: var(--logo-h);
+        padding: 0 var(--header-px) 0 0;
         color: $primary;
-        font-size: $font-size-title;
+        font-size: var(--title-fz);
     }
     &-scroll-to {
         position: fixed; top: 0.375rem; right: 50%; z-index: 2;
         display: none;
         padding: 0.25rem 1rem;
-        border-radius: 0.3125rem;
+        border-radius: var(--border-radius);
         background-color: $primary-light;
         font-weight: $font-bold;
         transform: translate(50%, 0);
