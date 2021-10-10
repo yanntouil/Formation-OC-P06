@@ -1,8 +1,9 @@
-# Projet 6 - Formation 
+# Projet 6 - Développeur Front-End
+[Page disponible sur Gitpage](https://yanntouil.github.io/yanntouil_6_29092021/public/index.html)
 ## Créez un site accessible pour une plateforme de photographes
 Depuis quelques semaines, vous êtes développeur junior chez Techasite, une société de conseil spécialisée dans le développement de sites web et d'applications mobiles.
 
-![Logo de FishEye](![alt text](https://user.oc-static.com/upload/2020/08/18/15977566540758_15975854296086_image1%20%281%29.png)
+![Logo de FishEye](https://user.oc-static.com/upload/2020/08/18/15977566540758_15975854296086_image1%20%281%29.png)
 
 Avec votre cheffe Amanda et le Designer UI, vous venez de faire une réunion de lancement du projet avec un nouveau client, FishEye. FishEye est un site web qui permet aux photographes indépendants de présenter leurs meilleurs travaux. Ils ont récemment levé des fonds et aimeraient mettre à jour leur site web. 
 
@@ -28,5 +29,19 @@ Après la réunion de lancement, vous voyez un mail de votre cheffe concernant l
 > + Le code est lisible. Choisis des noms qui ont un sens pour les variables, les fonctions et les classes. Ajoute des commentaires au code si le nom n'indique pas clairement ce qu’il se passe. 
 > Bonne chance et montre-moi ce que tu sais faire !
 Vous commencez par ouvrir les maquettes pour avoir une idée de ce qui doit être fait : 
+
+![Maquettes du site de FishEye](https://user.oc-static.com/upload/2020/08/18/15977571210897_image2.png)
+
+Lorsque vous commencez à regarder les maquettes, vous recevez un message de Zoé, une développeuse senior que vous admirez beaucoup. Elle vous a encadré et a effectué un grand nombre de vos révisions de code :
+
+> **Zoé** : Salut ! Amanda m'a dit qu'elle t'avait chargé de développer le premier prototype du projet FishEye, c'est bien ça ?
+> **Moi** : Oui, je viens de commencer !
+> **Zoé** : Tant mieux pour toi. Je pense que tu apprendras beaucoup au cours du processus. Je voulais juste te donner un petit conseil technique. Amanda a mentionné que FishEye a des vidéos et des photos pour le photographe. C'est une bonne occasion pour utiliser le pattern Factory Method, comme moyen de simplifier la création du bon élément DOM dans le reste du code. 
+> **Moi** : OK, je vais utiliser le pattern Factory Method. Merci encore !
+
+Bon, il semble bien que vous ayez maintenant tous les éléments dont vous avez besoin pour démarrer.  Il est temps de se mettre au travail !
+
+
+
 
 
