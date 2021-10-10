@@ -1,6 +1,6 @@
 # Projet 6 - Développeur Front-End
 
-[Page disponible sur Gitpage](https://yanntouil.github.io/yanntouil_6_29092021/public/index.html)
+[Page disponible sur GitHub Pages](https://yanntouil.github.io/yanntouil_6_29092021/public/index.html)
 
 ## Créez un site accessible pour une plateforme de photographes
 
